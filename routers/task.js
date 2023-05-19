@@ -31,6 +31,7 @@ router.get('/tasks' , auth , async(req,res)=>{
 router.get('/tasks/:id',auth , async(req , res)=>{
     try{
         // const task = await Task.findById(req.params.id)
+        const id = req.params.id
         const  task = await Task.findOne({_id:id , owner : req.user._id})
         if(!task){
             return res.status(404).send('this task is no owned for you ')
